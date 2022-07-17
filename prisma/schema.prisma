@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String
+  nick_name  String   @unique
+  bio        String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  followedBy User[] @relation("UserFollows")
+  following  User[] @relation("UserFollows")
+
+  users_Token Users_Token[]
+  Posts       Post[]
+  Comments    Comment[]
+
+  @@map("user")
+}
+
+model Users_Token {
+  id            String   @id @default(uuid())
+  refresh_token String
+  user_id       String
+  expires_date  DateTime
+  created_at    DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("users_token")
+}
+
+model Post {
+  id         String   @id @default(uuid())
+  content    String
+  likes      Int      @default(0)
+  user_id    String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  Comments Comment[]
+  user     User      @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("post")
+}
+
+model Comment {
+  id         String   @id @default(uuid())
+  content    String
+  user_id    String
+  post_id    String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post Post @relation(fields: [post_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("comment")
+}

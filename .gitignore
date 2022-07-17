@@ -1,0 +1,9 @@
+node_modules
+.vscode
+tmp/*
+coverage
+.env
+!tmp/.gitkeep
+dist
+src/shared/infra/database/seed/admin.ts
+
