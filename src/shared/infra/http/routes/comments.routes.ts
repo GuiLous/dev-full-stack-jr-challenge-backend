@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { CreateCommentController } from '@modules/comments/useCases/createComment/create-comment-controller';
-import { UpdateCommentController } from '@modules/comments/useCases/updateComment/update-comment-controller';
+import { CreateCommentController } from '@modules/comments/useCases/create-comment/create-comment-controller';
+import { UpdateCommentController } from '@modules/comments/useCases/update-comment/update-comment-controller';
 
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 

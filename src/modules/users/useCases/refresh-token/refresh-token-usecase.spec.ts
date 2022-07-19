@@ -3,8 +3,8 @@ import { UsersRepositoryInMemory } from '@modules/users/repositories/in-memory/u
 import { UsersTokensRepositoryInMemory } from '@modules/users/repositories/in-memory/users-tokens-repositor-in-memory';
 import { DayjsDateProvider } from '@shared/providers/date-provider/implementations/DayjsDateProvider';
 
-import { AuthenticateUserUseCase } from '../authenticateUser/authenticate-user-usecase';
-import { CreateUserUseCase } from '../createUser/create-user-usecase';
+import { AuthenticateUserUseCase } from '../authenticate-user/authenticate-user-usecase';
+import { CreateUserUseCase } from '../create-user/create-user-usecase';
 import { RefreshTokenUseCase } from './refresh-token-usecase';
 
 let usersTokensRepositoryInMemory: UsersTokensRepositoryInMemory;

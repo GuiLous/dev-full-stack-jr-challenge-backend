@@ -1,6 +1,7 @@
 import { User } from '@entities/User';
 
 import { ICreateUserDTO } from '../dtos/ICreateUserDTO';
+import { IUserListResponseDTO } from '../dtos/IUserListResponseDTO';
 import { IUsersCreateResponseDTO } from '../dtos/IUsersCreateResponseDTO';
 import { IUsersFindResponseDTO } from '../dtos/IUsersFindResponseDTO';
 
@@ -30,6 +31,7 @@ interface IUsersRepository {
     user_id: string,
     user_to_remove_id: string,
   ): Promise<IUsersFindResponseDTO | null>;
+  findUsersToFollow(user_id: string): Promise<IUserListResponseDTO[] | null>;
 }
 
 export { IUsersRepository };

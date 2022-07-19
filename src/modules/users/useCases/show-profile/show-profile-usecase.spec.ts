@@ -1,7 +1,7 @@
 import { UsersRepositoryInMemory } from '@modules/users/repositories/in-memory/users-repository-in-memory';
 import { AppError } from '@shared/errors/AppError';
 
-import { CreateUserUseCase } from '../createUser/create-user-usecase';
+import { CreateUserUseCase } from '../create-user/create-user-usecase';
 import { ShowProfileUseCase } from './show-profile-usecase';
 
 let usersRepositoryInMemory: UsersRepositoryInMemory;

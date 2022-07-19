@@ -5,16 +5,14 @@ import { AppError } from '@shared/errors/AppError';
 class ShowProfileUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
-  async execute(nick_name: string): Promise<IUsersFindResponseDTO> {
-    const userByNickName = await this.usersRepository.findUserByNickName(
-      nick_name,
-    );
+  async execute(user_id: string): Promise<IUsersFindResponseDTO> {
+    const user = await this.usersRepository.findUserById(user_id);
 
-    if (!userByNickName) {
+    if (!user) {
       throw new AppError('User not found!');
     }
 
-    return userByNickName;
+    return user;
   }
 }
 

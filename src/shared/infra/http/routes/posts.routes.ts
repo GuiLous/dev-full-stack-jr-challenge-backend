@@ -1,10 +1,10 @@
 import { Router } from 'express';
 
-import { CreatePostController } from '@modules/posts/useCases/createPost/create-post-controller';
-import { EditPostController } from '@modules/posts/useCases/editPost/edit-post-controller';
-import { LikePostController } from '@modules/posts/useCases/likePost/like-post-controller';
-import { RemoveLikePostController } from '@modules/posts/useCases/removeLikePost/remove-like-post-controller';
-import { ShowAllPostsFeedController } from '@modules/posts/useCases/showAllPostsFeed/show-all-posts-feed-controler';
+import { CreatePostController } from '@modules/posts/useCases/create-post/create-post-controller';
+import { EditPostController } from '@modules/posts/useCases/edit-post/edit-post-controller';
+import { LikePostController } from '@modules/posts/useCases/like-post/like-post-controller';
+import { RemoveLikePostController } from '@modules/posts/useCases/remove-like-post/remove-like-post-controller';
+import { ShowAllPostsFeedController } from '@modules/posts/useCases/show-all-posts-feed/show-all-posts-feed-controler';
 
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
@@ -29,7 +29,7 @@ postsRoutes.put(
 postsRoutes.put('/edit-post', ensureAuthenticated, editPostController.handle);
 
 postsRoutes.get(
-  '/:user/feed',
+  '/:user_nick_name/feed',
   ensureAuthenticated,
   showAllPostsFeedController.handle,
 );

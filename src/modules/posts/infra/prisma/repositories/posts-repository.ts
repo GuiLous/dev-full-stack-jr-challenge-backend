@@ -36,16 +36,40 @@ class PostsRepository implements IPostsRepository {
   async showAllPostsFeed(user_id: string): Promise<IPostsResponseDTO[]> {
     const response = await this.repository.post.findMany({
       where: {
-        user: {
-          followedBy: {
-            some: {
-              id: user_id,
+        OR: [
+          {
+            user: {
+              followedBy: {
+                some: {
+                  id: user_id,
+                },
+              },
+            },
+          },
+          {
+            user_id,
+          },
+        ],
+      },
+      include: {
+        Comments: {
+          include: {
+            user: {
+              select: {
+                nick_name: true,
+              },
             },
           },
         },
+        user: {
+          select: {
+            nick_name: true,
+            bio: true,
+          },
+        },
       },
-      include: {
-        Comments: true,
+      orderBy: {
+        created_at: 'desc',
       },
     });
 

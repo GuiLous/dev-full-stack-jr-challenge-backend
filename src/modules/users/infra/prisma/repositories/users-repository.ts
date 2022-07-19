@@ -1,5 +1,6 @@
 import { User } from '@entities/User';
 import { ICreateUserDTO } from '@modules/users/dtos/ICreateUserDTO';
+import { IUserListResponseDTO } from '@modules/users/dtos/IUserListResponseDTO';
 import { IUsersCreateResponseDTO } from '@modules/users/dtos/IUsersCreateResponseDTO';
 import { IUsersFindResponseDTO } from '@modules/users/dtos/IUsersFindResponseDTO';
 import { IUsersRepository } from '@modules/users/repositories/IUsersRepository';
@@ -373,6 +374,28 @@ class UsersRepository implements IUsersRepository {
           },
         },
         Posts: true,
+      },
+    });
+
+    return response;
+  }
+
+  async findUsersToFollow(user_id: string): Promise<IUserListResponseDTO[]> {
+    const response = await this.repository.user.findMany({
+      where: {
+        NOT: {
+          id: user_id,
+        },
+        followedBy: {
+          none: {
+            id: user_id,
+          },
+        },
+      },
+      select: {
+        id: true,
+        nick_name: true,
+        bio: true,
       },
     });
 

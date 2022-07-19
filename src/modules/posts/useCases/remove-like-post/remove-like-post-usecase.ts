@@ -2,7 +2,7 @@ import { IPostsResponseDTO } from '@modules/posts/dtos/IPostsResponseDTO';
 import { IPostsRepository } from '@modules/posts/repositories/IPostsRepository';
 import { AppError } from '@shared/errors/AppError';
 
-class LikePostUseCase {
+class RemoveLikePostUseCase {
   constructor(private postsRepository: IPostsRepository) {}
 
   async execute(post_id: string): Promise<IPostsResponseDTO> {
@@ -12,8 +12,7 @@ class LikePostUseCase {
       throw new AppError('Post not found!');
     }
 
-    post.likes += 1;
-    post.updated_at = new Date();
+    post.likes += -1;
 
     const response = await this.postsRepository.updatePost(post);
 
@@ -21,4 +20,4 @@ class LikePostUseCase {
   }
 }
 
-export { LikePostUseCase };
+export { RemoveLikePostUseCase };

@@ -2,6 +2,7 @@ import { v4 as uuidV4 } from 'uuid';
 
 import { User } from '@entities/User';
 import { ICreateUserDTO } from '@modules/users/dtos/ICreateUserDTO';
+import { IUserListResponseDTO } from '@modules/users/dtos/IUserListResponseDTO';
 import { IUsersCreateResponseDTO } from '@modules/users/dtos/IUsersCreateResponseDTO';
 import { IUsersFindResponseDTO } from '@modules/users/dtos/IUsersFindResponseDTO';
 
@@ -216,6 +217,10 @@ class UsersRepositoryInMemory implements IUsersRepository {
       following: user.following,
       Posts: user.Posts,
     };
+  }
+
+  async findUsersToFollow(user_id: string): Promise<IUserListResponseDTO[]> {
+    throw new Error('Method not implemented.');
   }
 }
 

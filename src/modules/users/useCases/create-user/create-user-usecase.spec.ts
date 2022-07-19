@@ -1,5 +1,5 @@
 import { UsersRepositoryInMemory } from '@modules/users/repositories/in-memory/users-repository-in-memory';
-import { CreateUserUseCase } from '@modules/users/useCases/createUser/create-user-usecase';
+import { CreateUserUseCase } from '@modules/users/useCases/create-user/create-user-usecase';
 import { AppError } from '@shared/errors/AppError';
 
 let usersRepositoryInMemory: UsersRepositoryInMemory;

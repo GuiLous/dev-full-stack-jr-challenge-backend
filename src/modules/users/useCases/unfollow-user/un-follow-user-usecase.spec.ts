@@ -1,8 +1,8 @@
 import { UsersRepositoryInMemory } from '@modules/users/repositories/in-memory/users-repository-in-memory';
 // import { AppError } from '@shared/errors/AppError';
 
-import { CreateUserUseCase } from '../createUser/create-user-usecase';
-import { FollowUserUseCase } from '../followUser/follow-user-usecase';
+import { CreateUserUseCase } from '../create-user/create-user-usecase';
+import { FollowUserUseCase } from '../follow-user/follow-user-usecase';
 import { UnFollowUserUseCase } from './un-follow-user-usecase';
 
 describe('UnFollow User', () => {
